@@ -219,7 +219,7 @@ class Baraja {
                     jugadores[posicion].tipoDesactivacion() - 1;
                     //Actualizamos los valores
                     numeroCartasJ.textContent = "⚪️ Número de cartas: " + jugadores[posicion].cartasMano();
-                    desactivacionJ.textContent = "⚪️ Cartas desactivación:" + jugadores[posicion].tipoDesactivacion();
+                    desactivacionJ.textContent = "⚪️ Cartas desactivación: " + jugadores[posicion].tipoDesactivacion();
                     jugadores[posicion].turno = false;
                     if (posicion == jugadores.length - 1) {
                         posicion = 0;
@@ -234,6 +234,18 @@ class Baraja {
                     let titulo = document.getElementById(`J${posicion}Titulo`);
                     titulo.textContent = "ELIMINADO";
                     contadorEliminados++;
+                    numeroCartasJ.textContent = "⚪️ Número de cartas: --";
+                    desactivacionJ.textContent = "⚪️ Cartas desactivación: --";
+                    puntosJ.textContent = "⚪️ Puntos totales: --";
+                    desactivacionJ.textContent = "⚪️ Cartas desactivación: --";
+                    saltoJ.textContent = "⚪️ Cartas salto turno: --";
+                    let lista = document.getElementById("listaDescarte");
+                    for(let indice = 0; indice < jugadores[posicion].cartasEnMano.length; indice++){
+                        let li = document.createElement("li");
+                        li.textContent = jugadores[posicion].cartasEnMano[indice].tipo;
+                        lista.append(li);
+                    }
+
                     if (posicion == jugadores.length - 1) {
                         posicion = 0;
                         jugadores[posicion].turno = true;
@@ -243,9 +255,9 @@ class Baraja {
                     }
                 }
             } else {
-                puntosJ.textContent = "⚪️ Puntos totales:" + jugadores[posicion].sumarPuntos();
-                desactivacionJ.textContent = "⚪️ Cartas desactivación:" + jugadores[posicion].tipoDesactivacion();
-                saltoJ.textContent = "⚪️ Cartas salto turno:" + jugadores[posicion].tipoSaltarTurno();
+                puntosJ.textContent = "⚪️ Puntos totales: " + jugadores[posicion].sumarPuntos();
+                desactivacionJ.textContent = "⚪️ Cartas desactivación: " + jugadores[posicion].tipoDesactivacion();
+                saltoJ.textContent = "⚪️ Cartas salto turno: " + jugadores[posicion].tipoSaltarTurno();
                 if (posicion < jugadores.length - 1) {
                     jugadores[posicion].turno = false;
                     jugadores[posicion + 1].turno = true;
